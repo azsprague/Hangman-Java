@@ -17,7 +17,7 @@ public class Hangman {
 	private ArrayList<String> guessed;
 	
 	/**
-	 * Creates a new Hangman object with two parameters:
+	 * Constructor for the class. Creates a new Hangman object with two parameters:
 	 * @param guessWord		The word to be guessed
 	 * @param limit			The limit on guesses
 	 */
@@ -28,47 +28,16 @@ public class Hangman {
 		wrongGuesses = 0;
 		guessed = new ArrayList<>();
 	}
+
+	public int getTotalGuessCount() { return totalGuesses; }
+
+	public int getWrongGuessCount() { return wrongGuesses; }
 	
-	/**
-	 * Returns the amount of total guesses.
-	 * @return the guess count
-	 */
-	public int getTotalGuessCount() {
-		return totalGuesses;
-	}
-	
-	/**
-	 * Returns the amount of wrong guesses.
-	 * @return the wrong guess count
-	 */
-	public int getWrongGuessCount() {
-		return wrongGuesses;
-	}
-	
-	/**
-	 * Returns the guess word.
-	 * @return the guess word
-	 */
-	public String getSecretWord() {
-		return arrayToString(guessWord);
-	}
-	
-	/**
-	 * Returns the mystery word.
-	 * @return the mystery word
-	 */
-	public String getDisguisedWord() {
-		return arrayToString(mysteryWord);
-	}
-	
-	
-	/**
-	 * Returns the letters that have been guessed.
-	 * @return the guessed letters
-	 */
-	public ArrayList<String> getGuessedLetters() {
-		return guessed;
-	}
+	public String getSecretWord() { return arrayToString(guessWord); }
+
+	public String getDisguisedWord() { return arrayToString(mysteryWord); }
+
+	public ArrayList<String> getGuessedLetters() { return guessed; }
 	
 	/**
 	 * Sets the guess word.
@@ -112,23 +81,20 @@ public class Hangman {
 	}
 	
 	/**
-	 * Makes a guess as to a letter in the word.
-	 * @param c		The char to guess
+	 * Guesses one letter in the word. Updates the player to let them know if
+	 * their guess was correct or not; also checks if the player is out of
+	 * guesses or if they have figured out the word.
+	 *
+	 * TODO: Separate this method into smaller ones; this should not be
+	 *	 directly giving output (that is the not the job of this class).
+	 *
+	 * @param c	The letter to guess
 	 */
 	public void makeGuess(char c) {
-		//TODO: Create a list of guessed letters so the player
-		//		cannot guess the same ones multiple times.
-		
-		//TODO: Tell the player when they have used all vowels.
-		
-		//TODO: Allow the player to fully guess the word if
-		//		they wish.
-		
 		ArrayList<Integer> indices = new ArrayList<>();
 		for (int i = 0; i < guessWord.length; i++) {
-			if (guessWord[i] == c) {
+			if (guessWord[i] == c) 
 				indices.add(i);
-			}
 		}
 		
 		totalGuesses++;
@@ -138,9 +104,8 @@ public class Hangman {
 			System.out.println("Incorrect Guess! (" + wrongGuesses
 					+ " out of " + limit + ")\n");
 		}
-		else if (indices.size() == 1) {
+		else if (indices.size() == 1) 
 			System.out.println("Correct! There is 1 " + c + ".\n");
-		}
 		else {
 			System.out.println("Correct! There are " + indices.size()
 					+ " " + c + "'s.\n");
@@ -178,4 +143,4 @@ public class Hangman {
 		return wrongGuesses >= limit;
 	}
 
-} //end of Hangman
+}
