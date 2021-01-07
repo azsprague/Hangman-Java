@@ -3,7 +3,7 @@ package hangman;
 import java.io.FileNotFoundException;
 
 /**
- * Runner for any given project.
+ * Runner for the hangman game.
  * 
  * @author Aidan Sprague
  * @version 2020.04.28
@@ -14,4 +14,4 @@ public class Driver {
 		new HangmanGame();
 	}
 
-} //end of Runner
+
