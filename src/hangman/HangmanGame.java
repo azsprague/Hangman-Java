@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 
 /**
- * Handles the game portion of a hangman game.
+ * Handles the game and output portion of a hangman game.
  * 
  * @author Aidan Sprague
  * @version 2020.04.28
@@ -32,11 +32,9 @@ public class HangmanGame {
 	}
 	
 	/**
-	 * Helper method that instantiates the game when it is created.
+	 * Helper method that begins the game when it is created.
 	 */
 	private void startUp() {
-		//TODO: Allow player to exit if they choose.
-		
 		System.out.println("Welcome to Hangman!");
 		System.out.println("-------------------\n");
 		System.out.print("Press '1' to Choose a Category, or "
